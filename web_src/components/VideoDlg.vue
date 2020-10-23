@@ -11,7 +11,7 @@
                 <div class="modal-body">
                     <div class="row" v-if="ptz">
                         <div :class="['form-group', 'play-area', { 'user-active': active, 'col-sm-8': hasAnyRole(serverInfo, userInfo, '管理员', '操作员'), 'col-sm-12': !hasAnyRole(serverInfo, userInfo, '管理员', '操作员')}]" @mousemove="doActive">
-                            <LivePlayer ref="player" v-if="bShow" :videoUrl="videoUrl" :poster="poster" :live="live" muted
+                            <LivePlayer ref="player" v-if="bShow" :videoUrl="videoUrl" :poster="poster" :live="live" :muted="muted"
                               @message="$message" :loading.sync="bLoading" v-loading="bLoading" element-loading-text="加载中">
                               <div class="player-demo-text" v-if="isDemoUser(serverInfo, userInfo)">
                                 提示: 演示系统限制匿名登录播放时间, 若需测试长时间播放, 请<a target="_blank" href="//www.liveqing.com/docs/download/LiveGBS.html">下载使用</a>
@@ -103,6 +103,7 @@ export default {
       streamInfo: null,
       bRecording: false,
       bShow: false,
+      muted: true,
       bLoading: false,
       recorder: null,
       ws: null,
@@ -178,12 +179,12 @@ export default {
       var videoUrl = this.isMobile() ? streamInfo.HLS : streamInfo.RTMP;
       var protocol = this.isMobile() ? "HLS" : "RTMP";
       if(this.flvSupported()) {
-        if(streamInfo.FLV) {
-          videoUrl = streamInfo.FLV;
-          protocol = "FLV";
-        } else if(streamInfo.WS_FLV && !this.isIE()) {
+         if(streamInfo.WS_FLV && !this.isIE()) {
           videoUrl = streamInfo.WS_FLV;
           protocol = "WS_FLV";
+        } else if(streamInfo.FLV) {
+          videoUrl = streamInfo.FLV;
+          protocol = "FLV";
         }
       }
       this.protocol = protocol;
@@ -194,7 +195,7 @@ export default {
       this.streamid = streamInfo.StreamID || "";
       this.bRecording = streamInfo.RecordStartAt != ""
       this.streamInfo = streamInfo;
-
+      this.muted = streamInfo.AudioEnable == true?false:true;
       this.$nextTick(() => {
         this.videoUrl = videoUrl || "";
         this.doActive();
