@@ -39,17 +39,17 @@ module.exports = {
         useLocalIp: true,
         proxy: {
             "**/ws-flv/**/*.flv": {
-                target: `ws://127.0.0.1:10000`,
+                target: `ws://127.0.0.1:8080`,
                 ws: true,
                 secure: false
             },
             "**/ws-talk/**": {
-                target: `ws://127.0.0.1:10000`,
+                target: `ws://127.0.0.1:8080,
                 ws: true,
                 secure: false
             },
             "*": {
-                target: 'http://127.0.0.1:10000',
+                target: 'http://127.0.0.1:8080',
                 secure: false
             }
         }
