@@ -52,7 +52,7 @@
             </template>
           </el-table-column>
           <el-table-column prop="Name" label="名称" min-width="140" :formatter="formatName" show-overflow-tooltip></el-table-column>
-          <el-table-column prop="CommandTransport" label="信令传输" min-width="120" :formatter="formatName" show-overflow-tooltip></el-table-column>
+          <!-- <el-table-column prop="CommandTransport" label="信令传输" min-width="120" :formatter="formatName" show-overflow-tooltip></el-table-column>
           <el-table-column prop="MediaTransport" label="流传输模式" min-width="140">
             <template slot-scope="props">
               <el-dropdown size="small" trigger="click" v-if="hasAnyRole(serverInfo, userInfo, '管理员')" @command="setMediaTransport">
@@ -67,7 +67,7 @@
               </el-dropdown>
               <span v-else>{{formatTransport(props.row)}}</span>
             </template>
-          </el-table-column>
+          </el-table-column> -->
           <el-table-column prop="ChannelCount" label="通道数" min-width="100" sortable="custom"></el-table-column>
           <el-table-column prop="Online" label="在线状态" min-width="100">
             <template slot-scope="props">
