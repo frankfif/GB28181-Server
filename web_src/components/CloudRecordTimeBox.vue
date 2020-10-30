@@ -91,7 +91,7 @@ export default {
             })
         },
         onTimeChange(video) {
-            this.videoUrl = this.pathname + ((video || {}).hls || "");
+            this.videoUrl = ((video || {}).hls || "");
             this.currentTime = (video || {}).currentTime || 0;
         },
         onVideoEnd() {
