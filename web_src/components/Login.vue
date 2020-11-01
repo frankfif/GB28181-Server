@@ -37,7 +37,7 @@
                         <a class="text-primary" role="button" @click="showPanel = 'forgot'">忘记密码</a>
                     </div>
                     <div class="col-xs-6 text-right" v-if="!serverInfo.APIAuth">
-                        <a href="/" class="text-primary">游客访问</a>
+                        <a href="./" class="text-primary">游客访问</a>
                         <!--<a href="#" class="" data-target="#regist-panel">注 册</a>-->
                     </div>
                 </div>

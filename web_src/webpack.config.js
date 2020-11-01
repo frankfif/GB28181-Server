@@ -17,7 +17,7 @@ module.exports = {
         "play": ['babel-polyfill', resolve('play.js')]
     },
     output: {
-        path: resolve('../../www'), // config to LiveCMS directory
+        path: resolve('../../ROOT'), // config to LiveCMS directory
         chunkFilename: 'js/[name].[chunkhash:8].js',
         filename: 'js/[name].[chunkhash:8].js'
     },
@@ -55,11 +55,13 @@ module.exports = {
         }
     },
     module: {
-        rules: [{
-            test: /\.js$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/
-        }, {
+        rules: [
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                exclude: /node_modules/
+            },
+        {
             test: /pretty-bytes/,
             loader: 'babel-loader'
         }, {
@@ -139,7 +141,7 @@ module.exports = {
         ]),
         new ExtractTextPlugin("css/[name].[chunkhash:8].css"),
         new HtmlWebpackPlugin({
-            filename: './index.html',
+            filename: 'index.html',
             title: 'LiveGBS',
             inject: true, // head -> Cannot find element: #app
             chunks: ['index'],
@@ -147,7 +149,7 @@ module.exports = {
             template: './template.html'
         }),
         new HtmlWebpackPlugin({
-            filename: './login.html',
+            filename: 'login.html',
             title: 'LiveGBS',
             inject: true,
             chunks: ['login'],
@@ -167,7 +169,7 @@ module.exports = {
 
 if (process.env.NODE_ENV == "production") {
     module.exports.plugins = (module.exports.plugins || []).concat([
-        new CleanWebpackPlugin(['www'], {
+        new CleanWebpackPlugin(['ROOT'], {
             root: resolve("../../") // config to LiveCMS directory
         }),
         new webpack.DefinePlugin({
