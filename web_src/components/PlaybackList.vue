@@ -34,7 +34,7 @@
                     <div class="btn-group btn-group-xs">
                         <button type="button" class="btn btn-primary" @click.prevent="startPlayback(props.row)" :disabled="props.row.Starting"><i class="fa fa-play-circle"></i> 播放</button>
                         <button type="button" class="btn btn-info" @click.prevent="downloadPlayback(props.row)" :disabled="props.row.Starting"><i class="fa fa-download"> 下载</i></button>
-                        <a :href="`/play.html?type=playback&ptz=no&serial=${devid}&code=${props.row.DeviceID}&starttime=${props.row.StartTime}&endtime=${props.row.EndTime}`" role="button" class="btn btn-warning" target="_blank"><i class="fa fa-share"></i> 分享页</a>
+                        <a :href="`./play.html?type=playback&ptz=no&serial=${devid}&code=${props.row.DeviceID}&starttime=${props.row.StartTime}&endtime=${props.row.EndTime}`" role="button" class="btn btn-warning" target="_blank"><i class="fa fa-share"></i> 分享页</a>
                     </div>
                 </template>
               </el-table-column>
@@ -46,7 +46,7 @@
                     <div class="btn-group btn-group-xs">
                         <button type="button" class="btn btn-primary" @click.prevent="startPlayback(props.row)" :disabled="props.row.Starting"><i class="fa fa-play-circle"></i> 播放</button>
                         <button type="button" class="btn btn-info" @click.prevent="downloadPlayback(props.row)" :disabled="props.row.Starting"><i class="fa fa-download"> 下载</i></button>
-                        <a :href="`/play.html?type=playback&ptz=no&serial=${devid}&code=${props.row.DeviceID}&starttime=${props.row.StartTime}&endtime=${props.row.EndTime}`" role="button" class="btn btn-warning" target="_blank"><i class="fa fa-share"></i> 分享页</a>
+                        <a :href="`./play.html?type=playback&ptz=no&serial=${devid}&code=${props.row.DeviceID}&starttime=${props.row.StartTime}&endtime=${props.row.EndTime}`" role="button" class="btn btn-warning" target="_blank"><i class="fa fa-share"></i> 分享页</a>
                     </div>
                 </template>
               </el-table-column>

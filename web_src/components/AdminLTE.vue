@@ -150,7 +150,7 @@ export default {
   mounted() {
     $(document).ajaxError((evt, xhr, opts, ex) => {
       if (xhr.status == 401) {
-        location.href = `/login.html?r=${encodeURIComponent(window.location.href)}`;
+        location.href = `./login.html?r=${encodeURIComponent(window.location.href)}`;
         return false;
       } else if (xhr.status) {
         let msg = xhr.responseText || "网络请求失败";

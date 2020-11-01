@@ -35,18 +35,19 @@ const store = new Vuex.Store({
                 icon: "bell",
                 title: "报警查询",
                 roles: ['管理员','操作员'],
-            }, {
+            }, /*{
                 path: "/cascade",
                 icon: "cloud-upload",
                 title: "国标级联",
                 versionType: "旗舰版",
                 roles: ['管理员'],
-            }, {
+            },*/ {
                 path: "/user",
                 icon: "users",
                 title: "用户管理",
                 roles: ['管理员'],
-            }, {
+            }
+            /*, {
                 path: "/config",
                 icon: "cogs",
                 title: "基础配置",
@@ -56,7 +57,7 @@ const store = new Vuex.Store({
                 icon: "support",
                 title: "版本信息",
                 roles: ['管理员'],
-            }
+            }*/
         ]
     },
     mutations: {

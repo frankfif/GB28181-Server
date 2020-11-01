@@ -47,7 +47,7 @@
                         <button type="button" class="btn btn-danger" @click.prevent="stopStream(props.row)" v-if="props.row.StreamID && hasAnyRole(serverInfo, userInfo, '管理员')">
                           <i class="fa fa-stop"></i> 停止
                         </button>
-                        <a :href="`/play.html?serial=${props.row.DeviceID}&code=${props.row.ID}`" class="btn btn-warning" target="_blank" v-if="canPlay(props.row) && (!!props.row.Shared || !serverInfo.APIAuth)">
+                        <a :href="`./play.html?serial=${props.row.DeviceID}&code=${props.row.ID}`" class="btn btn-warning" target="_blank" v-if="canPlay(props.row) && (!!props.row.Shared || !serverInfo.APIAuth)">
                           <i class="fa fa-share"></i> 分享页
                         </a>
                         <router-link class="btn btn-info" :to="`/devices/playback/timebox/${devid}/${props.row.ID}`" v-if="canPlayback(props.row)">
@@ -77,8 +77,8 @@
               <el-table-column min-width="100" label="快照">
                   <template slot-scope="props">
                       <el-popover :open-delay="1000" :close-delay="10" placement="left" :title="`通道${props.row.Channel}-${props.row.Name}`" width="400" trigger="hover">
-                          <img onerror='this.src="/images/default_snap.png"' style="width:100%;height:100%;" :src="props.row.SnapURL">
-                          <img onerror='this.src="/images/default_snap.png"' style="height:30px;width:50px;" slot="reference" :src="props.row.SnapURL">
+                          <img onerror='this.src="./images/default_snap.png"' style="width:100%;height:100%;" :src="props.row.SnapURL">
+                          <img onerror='this.src="./images/default_snap.png"' style="height:30px;width:50px;" slot="reference" :src="props.row.SnapURL">
                       </el-popover>
                   </template>
               </el-table-column>
@@ -131,7 +131,7 @@
                         <button type="button" class="btn btn-danger" @click.prevent="stopStream(props.row)" v-if="props.row.StreamID && hasAnyRole(serverInfo, userInfo, '管理员')">
                           <i class="fa fa-stop"></i> 停止
                         </button>
-                        <a :href="`/play.html?serial=${props.row.DeviceID}&code=${props.row.ID}`" class="btn btn-warning" target="_blank" v-if="canPlay(props.row) && (!!props.row.Shared || !serverInfo.APIAuth)">
+                        <a :href="`./play.html?serial=${props.row.DeviceID}&code=${props.row.ID}`" class="btn btn-warning" target="_blank" v-if="canPlay(props.row) && (!!props.row.Shared || !serverInfo.APIAuth)">
                           <i class="fa fa-share"></i> 分享页
                         </a>
                         <router-link class="btn btn-info" :to="`/devices/playback/timebox/${devid}/${props.row.ID}`" v-if="canPlayback(props.row)">

@@ -284,7 +284,7 @@ export default {
     $(document).ajaxError((evt, xhr, opts, ex) => {
       if (xhr.status == 401) {
         if (this.serverInfo.IsDemo) {
-          location.href = `/login.html?r=${encodeURIComponent(location.href)}`;
+          location.href = `./login.html?r=${encodeURIComponent(location.href)}`;
         } else {
           if (this.fullscreen) {
              console.log("登录认证过期");

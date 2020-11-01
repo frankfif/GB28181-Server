@@ -203,7 +203,7 @@ const router = new Router({
         path: 'logout',
         async beforeEnter(to, from, next) {
           await store.dispatch("logout");
-          window.location.href = `/login.html`;
+          window.location.href = `./login.html`;
         }
       }, {
         path: '*',
@@ -234,11 +234,11 @@ router.beforeEach(async (to, from, next) => {
   if (!userInfo) {
     if ((serverInfo && serverInfo.APIAuth === true) || to.matched.some(record => (record.meta.needLogin || record.meta.roles))) {
       if (to.fullPath == '/') {
-        window.location.href = `/login.html`;
+        window.location.href = `./login.html`;
       } else {
         var _url = url.parse(window.location.href, true);
         _url.hash = to.fullPath
-        window.location.href = `/login.html?r=${encodeURIComponent(url.format(_url))}`;
+        window.location.href = `./login.html?r=${encodeURIComponent(url.format(_url))}`;
       }
       return;
     }

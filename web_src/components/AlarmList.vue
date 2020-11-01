@@ -60,9 +60,9 @@
               </el-table-column>
               <el-table-column min-width="100" label="关联抓图">
                   <template slot-scope="props">
-                      <el-popover :open-delay="1000" :close-delay="10" placement="left" :title="`通道${props.row.Channel}-${props.row.Name}`" width="400" trigger="hover">
-                          <img onerror='this.src="/images/default_snap.png"' style="width:100%;height:100%;" :src="props.row.RecordLink">
-                          <img onerror='this.src="/images/default_snap.png"' style="height:30px;width:50px;" slot="reference" :src="props.row.RecordLink">
+                      <el-popover :open-delay="1000" :close-delay="10" placement="left" :title="`通道${props.row.ChannelID}`" width="400" trigger="hover">
+                          <img onerror='this.src="./images/default_snap.png"' style="width:100%;height:100%;" :src="props.row.RecordLink">
+                          <img onerror='this.src="./images/default_snap.png"' style="height:30px;width:50px;" slot="reference" :src="props.row.RecordLink">
                       </el-popover>
                   </template>
               </el-table-column>

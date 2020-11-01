@@ -31,7 +31,7 @@
                 </ul>
               </li>
               <li v-else>
-                <a href="/login.html"><i class="fa fa-user"></i> 登录</a>
+                <a href="./login.html"><i class="fa fa-user"></i> 登录</a>
               </li>
           </ul>
       </div>

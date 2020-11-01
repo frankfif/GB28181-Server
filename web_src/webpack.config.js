@@ -49,7 +49,7 @@ module.exports = {
                 secure: false
             },
             "*": {
-                target: 'http://127.0.0.1:8080',
+                target: 'http://192.168.1.100:8080',
                 secure: false
             }
         }
@@ -139,24 +139,27 @@ module.exports = {
         ]),
         new ExtractTextPlugin("css/[name].[chunkhash:8].css"),
         new HtmlWebpackPlugin({
-            filename: 'index.html',
+            filename: './index.html',
             title: 'LiveGBS',
             inject: true, // head -> Cannot find element: #app
             chunks: ['index'],
+            favicon:'./favicon.ico',
             template: './template.html'
         }),
         new HtmlWebpackPlugin({
-            filename: 'login.html',
+            filename: './login.html',
             title: 'LiveGBS',
             inject: true,
             chunks: ['login'],
+            favicon:'./favicon.ico',
             template: './template-login.html'
         }),
         new HtmlWebpackPlugin({
-            filename: 'play.html',
+            filename: './play.html',
             title: 'LiveGBS',
             inject: true,
             chunks: ['play'],
+            favicon:'./favicon.ico',
             template: './template-play.html'
         })
     ]
