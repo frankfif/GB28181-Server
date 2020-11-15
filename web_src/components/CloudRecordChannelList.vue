@@ -13,8 +13,10 @@
         <br>
         <div class="clearfix"></div>
         <el-table :data="pageData" stripe :default-sort="{prop: 'serial', order: 'ascending'}" @sort-change="sortChange">
-            <el-table-column min-width="250" label="设备国标编号" prop="serial" show-overflow-tooltip sortable="custom"></el-table-column>
-            <el-table-column min-width="250" label="通道国标编号" prop="code" show-overflow-tooltip sortable="custom"></el-table-column>
+            <el-table-column min-width="100" label="设备编号" prop="serial" show-overflow-tooltip sortable="custom"></el-table-column>
+             <el-table-column min-width="100" label="设备名称" prop="deviceName" show-overflow-tooltip ></el-table-column>
+            <el-table-column min-width="100" label="通道编号" prop="code" show-overflow-tooltip sortable="custom"></el-table-column>
+             <el-table-column min-width="100" label="通道名称" prop="channelName" show-overflow-tooltip ></el-table-column>
             <!-- <el-table-column min-width="200" label="通道名称" prop="name" show-overflow-tooltip></el-table-column> -->
             <el-table-column min-width="160" label="操作" :fixed="!isMobile() ? 'right' : undefined">
                 <template slot-scope="scope">
