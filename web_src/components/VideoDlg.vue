@@ -68,7 +68,6 @@
                     <el-radio-group v-model.trim="protocol" size="small" @change="setProtocol" id="protocol-switcher" class="hidden-xs pull-left">
                       <el-radio-button label="FLV" v-if="flvSupported()"></el-radio-button>
                       <el-radio-button label="WS_FLV" v-if="flvSupported() && !isIE()"></el-radio-button>
-                      <el-radio-button label="RTMP"></el-radio-button>
                       <el-radio-button label="HLS"></el-radio-button>
                     </el-radio-group>
                     <button v-if="hasAnyRole(serverInfo, userInfo, '管理员', '操作员') && serverInfo.VersionType == '旗舰版'" type="button" :class="['btn', {'btn-primary': !bRecording, 'btn-danger': bRecording}]" @click.prevent="toggleRecord()">
@@ -126,9 +125,6 @@ export default {
   computed: {
     ...mapState(['userInfo', 'serverInfo']),
     poster() {
-      if(this.protocol == "RTMP") {
-        return "";
-      }
       return this.snapUrl;
     }
   },
@@ -176,8 +172,8 @@ export default {
   methods: {
     play(title, serial, code, streamInfo) {
       streamInfo = streamInfo || {};
-      var videoUrl = this.isMobile() ? streamInfo.HLS : streamInfo.RTMP;
-      var protocol = this.isMobile() ? "HLS" : "RTMP";
+      var videoUrl = streamInfo.HLS;
+      var protocol = "HLS";
       if(this.flvSupported()) {
          if(streamInfo.WS_FLV && !this.isIE()) {
           videoUrl = streamInfo.WS_FLV;
@@ -189,7 +185,7 @@ export default {
       }
       this.protocol = protocol;
       this.videoTitle = title || "";
-      this.snapUrl = protocol == "RTMP" ? "" : (streamInfo.SnapURL || "");
+      this.snapUrl = (streamInfo.SnapURL || "");
       this.serial = serial || "";
       this.code = code || "";
       this.streamid = streamInfo.StreamID || "";
@@ -210,10 +206,6 @@ export default {
           break;
         case "WS_FLV":
           this.videoUrl = this.streamInfo.WS_FLV;
-          break;
-        case "RTMP":
-          this.snapUrl = "";
-          this.videoUrl = this.streamInfo.RTMP;
           break;
         case "HLS":
           this.videoUrl = this.streamInfo.HLS;

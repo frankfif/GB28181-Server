@@ -284,7 +284,7 @@ export default {
     $(document).ajaxError((evt, xhr, opts, ex) => {
       if (xhr.status == 401) {
         if (this.serverInfo.IsDemo) {
-          location.href = `./login.html?r=${encodeURIComponent(location.href)}`;
+          location.href = `/login.html?r=${encodeURIComponent(location.href)}`;
         } else {
           if (this.fullscreen) {
              console.log("登录认证过期");
@@ -321,15 +321,12 @@ export default {
       this.$nextTick(() => {
         $("body").layout("fix");
         this.fixHover();
-        if(!this.isIE() && !this.isMobile()) {
-          this.nice = $("body").niceScroll({
-              zindex: 999999,
-              cursorwidth: "10px",
-              cursoropacitymax: 0.5,
-              enablekeyboard: false,
-          });
-        }
+        this.initNiceScroll();
       })
+    }).on('shown.bs.modal', () => {
+        this.removeNiceScroll();
+    }).on('hidden.bs.modal', () => {
+        this.initNiceScroll();
     });
     $(".ptz-block").draggable({
       handle: '.ptz-center',
@@ -481,6 +478,23 @@ export default {
   },
   methods: {
     ...mapActions(["getServerInfo", "getUserInfo"]),
+    initNiceScroll() {
+        if(!this.isIE() && !this.isMobile() && !this.nice) {
+            this.nice = $('body').niceScroll({
+                zindex: 999999,
+                cursorwidth: "10px",
+                cursoropacitymax: 0.5,
+                preservenativescrolling: false,
+                enablekeyboard: false,
+            });
+        }
+    },
+    removeNiceScroll() {
+        if (this.nice) {
+            this.nice.remove();
+            this.nice = null;
+        }
+    },
     fixHover() {
       if (videojs.browser.IS_IOS || videojs.browser.IS_ANDROID) {
         for (var sheetI = document.styleSheets.length - 1; sheetI >= 0; sheetI--) {

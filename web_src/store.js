@@ -46,8 +46,12 @@ const store = new Vuex.Store({
                 icon: "users",
                 title: "用户管理",
                 roles: ['管理员'],
-            }
-            /*, {
+            }, {
+                path: "/logs",
+                icon: "list",
+                title: "操作日志",
+                roles: ['管理员'],
+            }, {
                 path: "/config",
                 icon: "cogs",
                 title: "基础配置",
@@ -57,7 +61,7 @@ const store = new Vuex.Store({
                 icon: "support",
                 title: "版本信息",
                 roles: ['管理员'],
-            }*/
+            }
         ]
     },
     mutations: {
